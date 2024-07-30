@@ -56,7 +56,8 @@ document.getElementById('moreJobs').addEventListener('click', () => {
     const jobList = document.getElementById('jobList');
     
     if (currentPage * jobsPerPage >= allJobs.length) {
-        jobList.innerHTML += '<p>No more jobs available.</p>';
+          jobList.innerHTML = '<p style="color: white;">No more jobs left</p>';
+
         return;
     }
 
