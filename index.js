@@ -60,7 +60,6 @@ document.getElementById('moreJobs').addEventListener('click', () => {
         return;
     }
 
-    // Move to the next page
     currentPage++;
 
     // Display the next page of jobs
