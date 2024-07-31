@@ -76,9 +76,9 @@ button:hover {
 }
 
 .job-item {
-    background: rgba(35, 39, 42, 0.85); /* Dark transparent background */
-    padding: 15px;
-    border-radius: 6px; /* Rounded corners for job items */
+    background: rgba(33, 43, 65, 0.65); /* Dark transparent background */
+    padding: 20px;
+    border-radius: 15px; /* Rounded corners for job items */
     box-shadow: 0 0 10px rgba(0,0,0,0.9); /* Darker shadow */
     text-align: center;
 }

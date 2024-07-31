@@ -56,7 +56,8 @@ document.getElementById('moreJobs').addEventListener('click', () => {
     const jobList = document.getElementById('jobList');
     
     if (currentPage * jobsPerPage >= allJobs.length) {
-        jobList.innerHTML += '<p>No more jobs available.</p>';
+        jobList.innerHTML = '<p style="color: white;">No more jobs left</p>';
+
         return;
     }
 
@@ -78,7 +79,7 @@ async function fetchJobs(url) {
         throw error;
     }
 }
-
+    // Normalize the Himalayas response
 function normalizeHimalayasJobs(jobData, keyword) {
     console.log('Himalayas job data:', jobData);
     if (!Array.isArray(jobData)) {
@@ -97,7 +98,7 @@ function normalizeHimalayasJobs(jobData, keyword) {
             url: job.url || '#'
         }));
 }
-
+    // Normalize Remotive.com response
 function normalizeRemotiveJobs(jobData, keyword) {
     console.log('Remotive job data:', jobData);
     if (!Array.isArray(jobData)) {
@@ -116,7 +117,7 @@ function normalizeRemotiveJobs(jobData, keyword) {
             url: job.url || '#'
         }));
 }
-
+    // Normalize the Remoteok.com response
 function normalizeRemoteOkJobs(jobData, keyword) {
     console.log('Remote OK job data:', jobData);
     if (!Array.isArray(jobData)) {
@@ -135,7 +136,7 @@ function normalizeRemoteOkJobs(jobData, keyword) {
             url: job.url || '#'
         }));
 }
-
+    // Display jobs function
 function displayJobs(jobs, append = false) {
     const jobList = document.getElementById('jobList');
     const jobHtml = jobs.map(job => `
