@@ -13,7 +13,7 @@ document.getElementById('searchJobs').addEventListener('click', async () => {
     }
 
     try {
-        const [himalayasJobs, remotiveJobs, remoteOkJobs] = await Promise.all([
+        const [remotiveJobs, remoteOkJobs] = await Promise.all([
             fetchJobs(`https://remotive.com/api/remote-jobs?limit=10&search=${keyword}`),
             fetchJobs(`https://remoteok.com/api?tag=${keyword}`)
         ]);
