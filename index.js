@@ -14,13 +14,11 @@ document.getElementById('searchJobs').addEventListener('click', async () => {
 
     try {
         const [himalayasJobs, remotiveJobs, remoteOkJobs] = await Promise.all([
-            fetchJobs(`https://himalayas.app/jobs/api?q=${keyword}`),
             fetchJobs(`https://remotive.com/api/remote-jobs?limit=10&search=${keyword}`),
             fetchJobs(`https://remoteok.com/api?tag=${keyword}`)
         ]);
 
         allJobs = [
-            ...normalizeHimalayasJobs(himalayasJobs, keyword),
             ...normalizeRemotiveJobs(remotiveJobs.jobs, keyword),
             ...normalizeRemoteOkJobs(remoteOkJobs, keyword)
         ];
@@ -77,25 +75,6 @@ async function fetchJobs(url) {
         console.error(`Error fetching from ${url}:`, error);
         throw error;
     }
-}
-    // Normalize the Himalayas response
-function normalizeHimalayasJobs(jobData, keyword) {
-    console.log('Himalayas job data:', jobData);
-    if (!Array.isArray(jobData)) {
-        console.error('Unexpected data format from Himalayas API:', jobData);
-        return [];
-    }
-    return jobData
-        .filter(job => job.title && job.title.toLowerCase().includes(keyword))
-        .map(job => ({
-            title: job.title || 'No Title',
-            company: job.company.name || 'No Company',
-            location: job.location || 'No Location',
-            salary: job.salary || 'No Salary',
-            description: job.description || 'No Description',
-            datePosted: job.published_at || 'No Date',
-            url: job.url || '#'
-        }));
 }
     // Normalize Remotive.com response
 function normalizeRemotiveJobs(jobData, keyword) {
